@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reaction Points Tracker</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Crimson+Text:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div id="app">
+
+        <!-- ==================== SETUP SCREEN ==================== -->
+        <div id="setup-screen" class="screen">
+            <h1>Reaction Points Tracker</h1>
+            <h2>Prepare Your Party</h2>
+
+            <form id="add-character-form" class="add-form">
+                <div class="form-row">
+                    <input type="text" id="char-name" placeholder="Character Name" required>
+                    <input type="number" id="char-level" placeholder="Lvl / CR" step="any" min="0" required>
+                    <label class="checkbox-label" title="Boss/Villain: uses one row below for RP, gets 2 Adrenaline Rush uses">
+                        <input type="checkbox" id="char-boss">
+                        <span>Boss</span>
+                    </label>
+                    <button type="submit" class="btn btn-add">Add</button>
+                </div>
+            </form>
+
+            <div id="character-queue" class="character-queue"></div>
+
+            <div class="setup-actions">
+                <button id="start-combat-btn" class="btn btn-primary btn-large" disabled>Start Combat</button>
+
+                <div class="party-presets">
+                    <div class="preset-row">
+                        <input type="text" id="party-name" placeholder="Party name...">
+                        <button id="save-party-btn" class="btn btn-secondary">Save Party</button>
+                    </div>
+                    <div class="preset-row">
+                        <select id="load-party-select">
+                            <option value="">— Load Saved Party —</option>
+                        </select>
+                        <button id="load-party-btn" class="btn btn-secondary">Load</button>
+                        <button id="delete-party-btn" class="btn btn-danger btn-small">Delete</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ==================== TRACKER SCREEN ==================== -->
+        <div id="tracker-screen" class="screen" style="display: none;">
+            <div class="tracker-header">
+                <h1>Combat Tracker</h1>
+                <div class="round-display">Round <span id="round-counter">1</span></div>
+            </div>
+
+            <div class="global-controls">
+                <button id="new-round-btn" class="btn btn-primary">New Round</button>
+                <button id="undo-btn" class="btn btn-secondary" disabled>Undo</button>
+                <button id="add-mid-combat-btn" class="btn btn-secondary">+ Character</button>
+                <button id="end-combat-btn" class="btn btn-danger">End Combat</button>
+            </div>
+
+            <form id="mid-combat-form" class="add-form" style="display: none;">
+                <div class="form-row">
+                    <input type="text" id="mid-char-name" placeholder="Character Name" required>
+                    <input type="number" id="mid-char-level" placeholder="Lvl / CR" step="any" min="0" required>
+                    <label class="checkbox-label" title="Boss/Villain: uses one row below for RP, gets 2 Adrenaline Rush uses">
+                        <input type="checkbox" id="mid-char-boss">
+                        <span>Boss</span>
+                    </label>
+                    <button type="submit" class="btn btn-add">Add</button>
+                    <button type="button" id="mid-cancel-btn" class="btn btn-secondary btn-small">Cancel</button>
+                </div>
+            </form>
+
+            <div id="character-cards" class="character-cards"></div>
+        </div>
+
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
